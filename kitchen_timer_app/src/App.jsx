@@ -8,26 +8,17 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <div>
+            <h1>Kitchen Timer App</h1>
+            <label htmlFor={'ingredient_input'}>Ingredient Name: </label>
+            <input name={'ingredient_input'} id={'ingredient_input'} placeholder={'ingredient'} type={'text'}/>
+            <br/>
+            <label htmlFor={'cooking_time'}>Cooking Time: </label>
+            <input name={'cooking_time'} id={'cooking_time'} placeholder={'cooking time'} type={'time'}/>
+
+        </div>
+
+
     </>
   )
 }
