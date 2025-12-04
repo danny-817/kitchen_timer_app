@@ -4,17 +4,31 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [newIngredient, setNewIngredient] = useState("");
+  const [newTime, setNewTime] = useState(0);
+  const [ingredientsList, setIngredientsList] = useState([
+      {ingredient: "test1"},{ ingredient: "test2"}
+  ]);
 
   return (
     <>
-        <div>
             <h1>Kitchen Timer App</h1>
+        <div className="input_field">
             <label htmlFor={'ingredient_input'}>Ingredient Name: </label>
-            <input name={'ingredient_input'} id={'ingredient_input'} placeholder={'ingredient'} type={'text'}/>
+            <input value={newIngredient} name={'ingredient_input'} id={'ingredient_input'} placeholder={'ingredient'} type={'text'} onChange={(e) => setNewIngredient(e.target.value)} />
             <br/>
-            <label htmlFor={'cooking_time'}>Cooking Time: </label>
-            <input name={'cooking_time'} id={'cooking_time'} placeholder={'cooking time'} type={'time'}/>
+            <label htmlFor={'total_cooking_time'}>Cooking Time (in minutes): </label>
+            <input value={newTime} name={'total_cooking_time'} id={'total_cooking_time'} placeholder={'total cooking time'} type={'number'} onChange={(e) => setNewTime(e.target.value)} />
+            <br/>
+            <button type='submit' className='button' onClick={() => alert(`${newIngredient} — ${newTime} mins`)}>Submit</button>
+
+        </div>
+        <div className="ingredients_list">
+            <ul>
+                {ingredientsList.map(ingredient => (
+                    <li key={ingredient.id}>{ingredient.ingredient}</li>
+                ))}
+            </ul>
 
         </div>
 
