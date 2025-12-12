@@ -7,13 +7,20 @@ function App() {
   const [newIngredient, setNewIngredient] = useState("");
   const [newTime, setNewTime] = useState(0);
   const [ingredientsList, setIngredientsList] = useState([
-      {ingredient: "test1"},{ ingredient: "test2"}
+      {ingredient: "test1", time:"test2"}
   ]);
 
   function handleIngredientChange(e) {
-      e.preventDefault();
+      //e.preventDefault();
       alert(`${newIngredient} — ${newTime} mins`);
-      console.log(e);
+      setNewIngredient();
+
+  }
+
+  function removeIngredient(e) {
+      const rowIndex = e.target.parentNode.parentNode.rowIndex
+      document.getElementById('ingredients_table').deleteRow(rowIndex);
+
   }
   return (
     <>
@@ -31,11 +38,24 @@ function App() {
             </form>
         </div>
         <div className="ingredients_list">
-            <ul>
+            <table id="ingredients_table">
+                <thead>
+                    <tr>
+                        <th scope="col" >Ingredient</th>
+                        <th scope="col" >Total Time</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {ingredientsList.map(ingredient => (
-                    <li key={ingredient.ingredient}>{ingredient.ingredient}</li>
+                    <tr key={ingredient.ingredient}>
+                        <td>{ingredient.ingredient}</td>
+                        <td>{ingredient.time}</td>
+                        <td><input type="button" value="Remove" onClick={removeIngredient}></input></td>
+                    </tr>
                 ))}
-            </ul>
+
+                </tbody>
+            </table>
 
         </div>
 
