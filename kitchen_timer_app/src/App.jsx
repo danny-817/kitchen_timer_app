@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import NewIngredientForm from './components/NewIngredientForm'
 import './App.css'
 
 function App() {
@@ -9,12 +9,7 @@ function App() {
       {ingredient: "test1", time:"test2"}
   ]);
 
-  function handleIngredientChange(e) {
-      //e.preventDefault();
-      alert(`${newIngredient} — ${newTime} mins`);
-      setNewIngredient();
 
-  }
 
   function removeIngredient(e) {
       const rowIndex = e.target.parentNode.parentNode.rowIndex
@@ -24,18 +19,19 @@ function App() {
   return (
     <>
             <h1>Kitchen Timer App</h1>
-        <div className="input_field">
-            <form onSubmit={handleIngredientChange}>
-                <label htmlFor={'ingredient_input'}>Ingredient Name: </label>
-                <input value={newIngredient} name={'ingredient_input'} id={'ingredient_input'} placeholder={'ingredient'} type={'text'} onChange={(e) => setNewIngredient(e.target.value)} />
-                <br/>
-                <label htmlFor={'total_cooking_time'}>Cooking Time (in minutes
-                </label>
-                <input value={newTime} name={'total_cooking_time'} id={'total_cooking_time'} placeholder={'total cooking time'} type={'number'} onChange={(e) => setNewTime(e.target.value)} />
-                <br/>
-                <button type='submit' className='button' >Submit</button>
-            </form>
-        </div>
+        <NewIngredientForm />
+        {/*<div className="input_field">*/}
+        {/*    <form onSubmit={handleIngredientChange}>*/}
+        {/*        <label htmlFor={'ingredient_input'}>Ingredient Name: </label>*/}
+        {/*        <input value={newIngredient} name={'ingredient_input'} id={'ingredient_input'} placeholder={'ingredient'} type={'text'} onChange={(e) => setNewIngredient(e.target.value)} />*/}
+        {/*        <br/>*/}
+        {/*        <label htmlFor={'total_cooking_time'}>Cooking Time (in minutes*/}
+        {/*        </label>*/}
+        {/*        <input value={newTime} name={'total_cooking_time'} id={'total_cooking_time'} placeholder={'total cooking time'} type={'number'} onChange={(e) => setNewTime(e.target.value)} />*/}
+        {/*        <br/>*/}
+        {/*        <button type='submit' className='button' >Submit</button>*/}
+        {/*    </form>*/}
+        {/*</div>*/}
         <div className="ingredients_list">
             <table id="ingredients_table">
                 <thead>
