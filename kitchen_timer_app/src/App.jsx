@@ -3,8 +3,7 @@ import NewIngredientForm from './components/NewIngredientForm'
 import './App.css'
 
 function App() {
-  const [newIngredient, setNewIngredient] = useState("");
-  const [newTime, setNewTime] = useState(0);
+
   const [ingredientsList, setIngredientsList] = useState([
       {ingredient: "test1", time:"test2"}
   ]);

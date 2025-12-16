@@ -1,13 +1,20 @@
+import {useState} from "react";
 
-function handleIngredientChange(e) {
-    //e.preventDefault();
-    alert(`${newIngredient} — ${newTime} mins`);
-    setNewIngredient();
+export default function NewIngredientForm () {
 
-}
-export default function newIngredientForm () {
+    const [newIngredient, setNewIngredient] = useState("");
+    const [newTime, setNewTime] = useState(0);
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        //alert(`${newIngredient} — ${newTime} mins`);
+        setNewIngredient("");
+        setNewTime(0)
+
+    }
+
     return (<div className="input_field">
-        <form onSubmit={handleIngredientChange}>
+        <form onSubmit={handleSubmit}>
             <label htmlFor={'ingredient_input'}>Ingredient Name: </label>
             <input value={newIngredient} name={'ingredient_input'} id={'ingredient_input'} placeholder={'ingredient'} type={'text'} onChange={(e) => setNewIngredient(e.target.value)} />
             <br/>
