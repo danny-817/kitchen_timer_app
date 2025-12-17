@@ -1,15 +1,16 @@
 import {useState} from "react";
 
-export default function NewIngredientForm () {
+export default function NewIngredientForm ({onAddIngredient}) {
 
     const [newIngredient, setNewIngredient] = useState("");
     const [newTime, setNewTime] = useState(0);
 
     function handleSubmit(e) {
         e.preventDefault();
-        //alert(`${newIngredient} — ${newTime} mins`);
-        setNewIngredient("");
-        setNewTime(0)
+        onAddIngredient({ingredient: newIngredient, time: newTime});
+        alert(`${newIngredient} — ${newTime} mins`);
+        // setNewIngredient("");
+        // setNewTime(0)
 
     }
 
@@ -20,7 +21,7 @@ export default function NewIngredientForm () {
             <br/>
             <label htmlFor={'total_cooking_time'}>Cooking Time (in minutes
             </label>
-            <input value={newTime} name={'total_cooking_time'} id={'total_cooking_time'} placeholder={'total cooking time'} type={'number'} onChange={(e) => setNewTime(e.target.value)} />
+            <input value={newTime} name={'total_cooking_time'} id={'total_cooking_time'} placeholder={'total cooking time'} type={'number'} onChange={(e) => setNewTime(Number(e.target.value))} />
             <br/>
             <button type='submit' className='button' >Submit</button>
         </form>
